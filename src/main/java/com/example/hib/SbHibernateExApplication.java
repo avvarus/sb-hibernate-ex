@@ -1,6 +1,7 @@
 package com.example.hib;
 
 import com.example.hib.model.Actor;
+import com.example.hib.service.MySqlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

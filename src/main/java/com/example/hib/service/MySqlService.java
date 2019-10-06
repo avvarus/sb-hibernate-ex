@@ -1,4 +1,4 @@
-package com.example.hib;
+package com.example.hib.service;
 
 
 import com.example.hib.model.Actor;
