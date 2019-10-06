@@ -23,11 +23,7 @@ public class MySqlRepo {
         return null;
     }
 
-    public void saveActor() {
-
-        Actor actor = new Actor("Sujeeth", "Avvaru");
-
-
+    public void saveActor(Actor actor) {
         entityManager.persist(actor);
     }
 

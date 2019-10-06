@@ -5,9 +5,7 @@ import com.example.hib.repository.MySqlRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -44,20 +42,28 @@ public class SbHibernateExApplication {
     }
 
 
-    @GetMapping(value = "/actor/{actorId}")
-    @Transactional
-    /** this annotation must be
+    /**
+     * this annotation must be
      * from the place where the
      * repo is called
      */
-
+    @GetMapping(value = "/actor/{actorId}")
+    @Transactional
     public String getByActorId(@PathVariable int actorId) {
 
         Actor actor = mySqlRepo.getAllByActorId(actorId);
-
         System.out.println("Actor -- " + actor);
-        mySqlRepo.saveActor();
+
         return "Returned !!";
+    }
+
+
+    @PostMapping(value = "/save")
+    @Transactional
+    public String saveActor(@RequestBody Actor actor) {
+
+        mySqlRepo.saveActor(actor);
+        return "Saved !!";
     }
 
 }
