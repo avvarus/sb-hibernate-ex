@@ -16,7 +16,7 @@ public class MySqlRepo {
     @Autowired
     EntityManager entityManager;
 
-    public Actor getAllByActorId(int actorId) {
+    public Actor getByActorId(int actorId) {
         return entityManager.find(Actor.class, actorId);
     }
 
@@ -28,5 +28,10 @@ public class MySqlRepo {
 
     public void saveActor(Actor actor) {
         entityManager.persist(actor);
+    }
+
+    public void removeActor(int actorId) {
+        //fetch and then delete
+        entityManager.remove(getByActorId(actorId));
     }
 }

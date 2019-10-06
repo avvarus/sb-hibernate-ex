@@ -6,8 +6,6 @@ import com.example.hib.repository.MySqlRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
 
 @Service
 public class MySqlService {
@@ -22,7 +20,7 @@ public class MySqlService {
      * @return
      */
     public Actor getActorById(int actorId) {
-        return mySqlRepo.getAllByActorId(actorId);
+        return mySqlRepo.getByActorId(actorId);
     }
 
     /**
@@ -32,5 +30,10 @@ public class MySqlService {
      */
     public void saveActor(Actor actor) {
         mySqlRepo.saveActor(actor);
+    }
+
+
+    public void removeActor(int actorId) {
+        mySqlRepo.removeActor(actorId);
     }
 }

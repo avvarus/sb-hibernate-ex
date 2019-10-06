@@ -8,11 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
-@RestController
-public class SbHibernateExApplication {
 
-    @Autowired
-    private MySqlService mySqlService;
+public class SbHibernateExApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SbHibernateExApplication.class, args);
@@ -30,28 +27,4 @@ public class SbHibernateExApplication {
 //                        System.out.println("stringObjectEntry = " + stringObjectEntry.getKey()+" -- "+stringObjectEntry.getValue()));
 //
 //    }
-
-    @GetMapping(value = "/hi")
-    public String getString() {
-        return "Hello World !!";
-    }
-
-
-    /**
-     * this annotation must be
-     * from the place where the
-     * repo is called
-     */
-    @GetMapping(value = "/actor/{actorId}")
-    public Actor getByActorId(@PathVariable int actorId) {
-        return mySqlService.getActorById(actorId);
-    }
-
-
-    @PostMapping(value = "/save")
-    public String saveActor(@RequestBody Actor actor) {
-        mySqlService.saveActor(actor);
-        return "Saved !!";
-    }
-
 }
